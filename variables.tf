@@ -54,8 +54,8 @@ variable "clusters" {
   description = "Map of ElastiCache replication groups to create. Key becomes the cluster_key (e.g. \"cache\")."
   type = map(object({
     # ── Engine ────────────────────────────────────────────────────
-    engine         = optional(string, "valkey")
-    engine_version = optional(string, "8.0")
+    engine         = optional(string, "redis")
+    engine_version = optional(string, "7.0")
     node_type      = string
 
     # Total number of cache clusters (1 = single primary, 2+ = primary + replicas).
