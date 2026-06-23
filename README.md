@@ -1,6 +1,6 @@
 # tf-elasticache-common
 
-Generic ElastiCache building block. Creates one or more Valkey/Redis replication groups
+Generic ElastiCache building block. Creates one or more Redis replication groups
 with their supporting resources (subnet group, parameter group, security group, optional
 slow-log delivery to CloudWatch). Follows the same conventions as `tf-ecs-common`.
 
@@ -20,7 +20,7 @@ slow-log delivery to CloudWatch). Follows the same conventions as `tf-ecs-common
 > The module enforces this via a `precondition`. With the standard naming scheme,
 > a cluster_key of up to ~9 characters fits comfortably for typical project names.
 
-## Example — Valkey cluster for the strike project
+## Example — Redis cluster for the strike project
 
 ```hcl
 module "elasticache" {
@@ -34,9 +34,9 @@ module "elasticache" {
   clusters = {
     # Creates: euc1-scrypt-strike-elasticache-cache
     cache = {
-      engine     = "valkey"
+      engine         = "redis"
       engine_version = "8.0"
-      node_type  = "cache.t4g.small"
+      node_type      = "cache.t4g.small"
 
       num_cache_clusters         = 2
       automatic_failover_enabled = true
@@ -71,9 +71,9 @@ module "elasticache" {
 ```hcl
 clusters = {
   cache = {
-    engine     = "valkey"
+    engine         = "redis"
     engine_version = "8.0"
-    node_type  = "cache.t4g.micro"
+    node_type      = "cache.t4g.micro"
 
     at_rest_encryption_enabled = true
     transit_encryption_enabled = false
